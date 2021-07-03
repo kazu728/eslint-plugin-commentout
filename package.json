@@ -1,0 +1,86 @@
+{
+  "name": "eslint-plugin-commentout",
+  "version": "0.0.1",
+  "description": "Eslint plugin, disallow commentout",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin"
+  ],
+  "author": "kzmat",
+  "main": "dist/index.js",
+  "files": [
+    "dist/**/*",
+    "LICENSE",
+    "package.json"
+  ],
+  "scripts": {
+    "fix:eslint": "eslint --fix --ext ts,tsx ./src",
+    "fix:prettier": "prettier --write \"./**/*.{md,json}\"",
+    "lint:eslint": "eslint --ext ts,tsx ./src",
+    "lint:prettier": "prettier --check \"./**/*.{md,json}\"",
+    "test": "jest"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/eslint": "^7.2.6",
+    "@types/eslint-plugin-prettier": "^3.1.0",
+    "@types/jest": "^26.0.19",
+    "@types/prettier": "^2.1.6",
+    "@typescript-eslint/eslint-plugin": "^4.14.0",
+    "@typescript-eslint/experimental-utils": "^4.28.1",
+    "@typescript-eslint/parser": "^4.14.0",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-local-rules": "^1.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-security": "^1.4.0",
+    "husky": "^4.3.8",
+    "jest": "^26.6.3",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.4.4",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.5"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "testMatch": [
+      "**/__test__/*.(ts|tsx)"
+    ],
+    "testPathIgnorePatterns": [
+      "./node_modules/"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "tsconfig.json"
+      }
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,vue}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">=12.*"
+  },
+  "license": "MIT",
+  "eslintIgnore": [
+    "/.eslintrc.js",
+    "eslint-local-rules.js"
+  ]
+}
