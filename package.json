@@ -58,7 +58,9 @@
       "ts-jest": {
         "tsconfig": "tsconfig.json"
       }
-    }
+    },
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   },
   "husky": {
     "hooks": {
