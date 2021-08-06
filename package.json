@@ -1,7 +1,7 @@
 {
   "name": "@kzmat/eslint-plugin-commentout",
   "version": "0.0.1",
-  "description": "Eslint plugin, disallow commentout",
+  "description": "Eslint plugin, disallow commentout except annotation comment",
   "keywords": [
     "eslint",
     "eslintplugin",
@@ -12,7 +12,8 @@
   "files": [
     "dist/**/*",
     "LICENSE",
-    "package.json"
+    "package.json",
+    "README.md"
   ],
   "scripts": {
     "fix:eslint": "eslint --fix --ext ts,tsx ./src",
@@ -44,24 +45,6 @@
     "ts-node": "^10.0.0",
     "typescript": "^4.3.5"
   },
-  "jest": {
-    "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest"
-    },
-    "testMatch": [
-      "**/__test__/*.(ts|tsx)"
-    ],
-    "testPathIgnorePatterns": [
-      "./node_modules/"
-    ],
-    "globals": {
-      "ts-jest": {
-        "tsconfig": "tsconfig.json"
-      }
-    },
-    "coverageDirectory": "./coverage/",
-    "collectCoverage": true
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -83,6 +66,7 @@
   "license": "MIT",
   "eslintIgnore": [
     "/.eslintrc.js",
-    "eslint-local-rules.js"
+    "eslint-local-rules.js",
+    "jest.config.js"
   ]
 }
