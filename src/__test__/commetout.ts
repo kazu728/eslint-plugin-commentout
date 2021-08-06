@@ -10,7 +10,16 @@ const tester = new TSESLint.RuleTester({
 })
 
 tester.run('commentout', commentout, {
-  valid: [{ code: "const foo = 'bar'" }],
+  valid: [
+    { code: "const foo = 'bar'" },
+    { code: "// TODO: const foo = 'bar'" },
+    { code: "// FIXME: const foo = 'bar'" },
+    { code: "// HACK: const foo = 'bar'" },
+    { code: "// XXX: const foo = 'bar'" },
+    { code: "// NOTE: const foo = 'bar'" },
+    { code: "// WARNING: const foo = 'bar'" },
+    { code: "// @ts-ignore: const foo = 'bar'" },
+  ],
   invalid: [
     {
       code: '// describe invalid code pattern',
