@@ -4,16 +4,16 @@
 [![test](https://github.com/kzmat/eslint-plugin-commentout/actions/workflows/test.yaml/badge.svg)](https://github.com/kzmat/eslint-plugin-commentout/actions/workflows/test.yaml)
 [![codecov](https://codecov.io/gh/kzmat/eslint-plugin-commentout/branch/master/graph/badge.svg?token=FVZHVNM64S)](https://codecov.io/gh/kzmat/eslint-plugin-commentout)
 
-Eslint plugin that check comemntout except annotation comment are written.
+Eslint plugin that check commentout except annotation comment.
 This plugin supports following annotation.
 
-- @
 - TODO:
 - FIXME:
 - HACK:
 - NOTE:
 - XXX:
 - WARNING:
+- @.\*
 
 ## Install
 
@@ -46,6 +46,7 @@ module.exports = {
 const foo = 'bar'
 // TODO: const foo = 'bar'
 // FIXME: const foo = 'bar'
+// @ts-ignore
 
 🙅‍♂️ Bad
 // const foo = 'bar'
