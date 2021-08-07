@@ -1,6 +1,6 @@
 {
   "name": "@kzmat/eslint-plugin-commentout",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Eslint plugin, disallow commentout except annotation comment",
   "keywords": [
     "eslint",
