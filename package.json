@@ -1,6 +1,6 @@
 {
   "name": "@kzmat/eslint-plugin-commentout",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Eslint plugin, disallow commentout except annotation comment",
   "keywords": [
     "eslint",
@@ -8,6 +8,12 @@
     "eslint-plugin"
   ],
   "author": "kzmat",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kzmat/eslint-plugin-commentout"
+  },
+  "bugs": "https://github.com/kzmat/eslint-plugin-commentout/issues",
   "main": "dist/index.js",
   "files": [
     "dist/**/*",
@@ -63,7 +69,6 @@
   "engines": {
     "node": ">=12.*"
   },
-  "license": "MIT",
   "eslintIgnore": [
     "/.eslintrc.js",
     "eslint-local-rules.js",
