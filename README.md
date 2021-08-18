@@ -18,7 +18,7 @@ This plugin supports following annotation.
 ## Install
 
 ```
-yarn add @kzmat/eslint-plugin-commentout
+yarn add -D @kzmat/eslint-plugin-commentout
 ```
 
 ## Usage
@@ -29,11 +29,11 @@ yarn add @kzmat/eslint-plugin-commentout
 module.exports = {
   "plugins": [
     ...,
-    "@kzmat"
+    "@kzmat/commentout"
   ],
   "rules": [
     ...,
-    "@kzmat/commentout": "error",
+    "@kzmat/commentout/commentout": "error"
   ]
   ...,
 }
@@ -49,6 +49,7 @@ const foo = 'bar'
 
 // @ts-ignore
 const foo: any = 'bar'
+
 🙅‍♂️ Bad
 // const foo = 'bar'
 ```
