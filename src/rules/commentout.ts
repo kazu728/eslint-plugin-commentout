@@ -1,4 +1,8 @@
-import { TSESLint, TSESTree } from '@typescript-eslint/experimental-utils'
+import {
+  AST_TOKEN_TYPES,
+  TSESLint,
+  TSESTree,
+} from '@typescript-eslint/experimental-utils'
 
 export const commentout: TSESLint.RuleModule<'commentout', []> = {
   meta: {
@@ -10,7 +14,7 @@ export const commentout: TSESLint.RuleModule<'commentout', []> = {
       url: '',
     },
     messages: {
-      commentout: 'Remove commentout.',
+      commentout: 'Remove inline comment except annotation.',
     },
     schema: [],
     fixable: 'code',
@@ -19,25 +23,28 @@ export const commentout: TSESLint.RuleModule<'commentout', []> = {
   create: (
     context: Readonly<TSESLint.RuleContext<'commentout', []>>,
   ): TSESLint.RuleListener => {
-    return {
-      Program: (node: TSESTree.Node): void => {
-        context.getSourceCode().lines.forEach((line: string): void => {
-          if (isValid(line)) return
+    const report = (node: TSESTree.Comment): void =>
+      context.report({
+        node,
+        messageId: 'commentout',
+      })
 
-          context.report({ node, messageId: 'commentout' })
-        })
+    return {
+      Program: (): void => {
+        context
+          .getSourceCode()
+          .getAllComments()
+          .filter(isInvalid)
+          .forEach(report)
       },
     }
   },
 }
 
-const isValid = (line: string): boolean => {
-  const hasCommentout = new RegExp('^// .*').test(line)
-  if (!hasCommentout) return true
-
+const isInvalid = (node: TSESTree.Comment): boolean => {
   const hasAnnotationComment = new RegExp(
-    '^// (TODO|FIXME|HACK|XXX|NOTE|WARNING:)|@.*',
-  ).test(line)
+    '(TODO|FIXME|HACK|XXX|NOTE|WARNING).*|@.*',
+  ).test(node.value)
 
-  return hasCommentout && hasAnnotationComment
+  return node.type === AST_TOKEN_TYPES.Line && !hasAnnotationComment
 }
