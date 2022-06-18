@@ -8,7 +8,6 @@ export const commentout: TSESLint.RuleModule<'commentout', []> = {
   meta: {
     type: 'suggestion',
     docs: {
-      category: 'Possible Errors',
       description: 'Check existing commentout.',
       recommended: 'error',
       url: '',
